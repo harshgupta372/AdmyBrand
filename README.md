@@ -2,7 +2,7 @@
 
 A modern, responsive analytics dashboard built for digital marketing agencies using Next.js 14, TypeScript, and shadcn/ui. Features real-time data visualization, interactive charts, and a beautiful dark/light mode interface.
 
-![Dashboard Preview](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=center)
+![dashboard](https://github.com/user-attachments/assets/07c9b152-a84a-48bd-b934-dd7791527ea1)
 
 ## ✨ Features
 
@@ -190,9 +190,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**Your Name** - your.email@example.com
+**Harsh gupta** - harshgupta.workmail@gmail.com
 
-Project Link: [https://github.com/yourusername/admybrand-insights](https://github.com/yourusername/admybrand-insights)
+Project Link: https://github.com/harshgupta372/AdmyBrand
 
 ---
 
