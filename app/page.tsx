@@ -12,7 +12,7 @@ import { PerformanceInsights } from '@/components/performance-insights';
 import { DollarSign, Users, Target, TrendingUp } from 'lucide-react';
 import { Toaster } from '@/components/ui/sonner';
 
-export default function Dashboard() {
+export default function Page() {
   const [dateRange, setDateRange] = React.useState<any>(null);
   const [filters, setFilters] = React.useState<any>({});
   const [metrics, setMetrics] = React.useState({

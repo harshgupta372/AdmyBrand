@@ -4,6 +4,14 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
+// Type assertion to fix React compatibility issues
+const ResponsiveContainerWrapper = ResponsiveContainer as any;
+const PieChartWrapper = PieChart as any;
+const PieWrapper = Pie as any;
+const CellWrapper = Cell as any;
+const TooltipWrapper = Tooltip as any;
+const LegendWrapper = Legend as any;
+
 const data = [
   { name: 'Direct', value: 40, color: '#3B82F6' },
   { name: 'Social', value: 25, color: '#8B5CF6' },
@@ -23,9 +31,9 @@ export function TrafficChart() {
         <CardTitle className="text-lg font-semibold">Traffic Sources</CardTitle>
       </CardHeader>
       <CardContent className="pt-2 sm:pt-0">
-        <ResponsiveContainer width="100%" height={250} className="sm:!h-[300px]">
-          <PieChart>
-            <Pie
+        <ResponsiveContainerWrapper width="100%" height={250} className="sm:!h-[300px]">
+          <PieChartWrapper>
+            <PieWrapper
               data={data}
               cx="50%"
               cy="50%"
@@ -36,10 +44,10 @@ export function TrafficChart() {
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
+                <CellWrapper key={`cell-${index}`} fill={entry.color} />
               ))}
-            </Pie>
-            <Tooltip 
+            </PieWrapper>
+            <TooltipWrapper 
               formatter={(value: number) => [`${value}%`, 'Traffic']}
               contentStyle={{ 
                 border: 'none', 
@@ -48,14 +56,14 @@ export function TrafficChart() {
                 fontSize: '12px'
               }}
             />
-            <Legend 
+            <LegendWrapper 
               verticalAlign="bottom"
               height={30}
               iconType="circle"
               wrapperStyle={{ fontSize: '12px' }}
             />
-          </PieChart>
-        </ResponsiveContainer>
+          </PieChartWrapper>
+        </ResponsiveContainerWrapper>
       </CardContent>
     </Card>
     </motion.div>

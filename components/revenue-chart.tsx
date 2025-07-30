@@ -4,6 +4,15 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+// Type assertion to fix React compatibility issues
+const ResponsiveContainerWrapper = ResponsiveContainer as any;
+const LineChartWrapper = LineChart as any;
+const LineWrapper = Line as any;
+const XAxisWrapper = XAxis as any;
+const YAxisWrapper = YAxis as any;
+const CartesianGridWrapper = CartesianGrid as any;
+const TooltipWrapper = Tooltip as any;
+
 const data = [
   { month: 'Jan', revenue: 98000 },
   { month: 'Feb', revenue: 105000 },
@@ -38,25 +47,25 @@ export function RevenueChart() {
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-2 sm:pt-0">
-        <ResponsiveContainer width="100%" height={250} className="sm:!h-[300px]">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
-            <XAxis 
+        <ResponsiveContainerWrapper width="100%" height={250} className="sm:!h-[300px]">
+          <LineChartWrapper data={data}>
+            <CartesianGridWrapper strokeDasharray="3 3" className="opacity-30" />
+            <XAxisWrapper 
               dataKey="month" 
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 10 }}
               className="sm:text-xs"
             />
-            <YAxis 
+            <YAxisWrapper 
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 10 }}
               className="sm:text-xs"
-              tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+              tickFormatter={(value: number) => `$${(value / 1000).toFixed(0)}k`}
               width={40}
             />
-            <Tooltip 
+            <TooltipWrapper 
               formatter={(value: number) => [`$${value.toLocaleString()}`, 'Revenue']}
               labelStyle={{ color: '#374151' }}
               contentStyle={{ 
@@ -66,18 +75,17 @@ export function RevenueChart() {
                 fontSize: '12px'
               }}
             />
-            <Line 
+            <LineWrapper 
               type="monotone" 
               dataKey="revenue" 
               stroke="#3B82F6" 
               strokeWidth={2}
-              className="sm:stroke-[3px]"
+              className="sm:stroke-[3px] sm:[&>circle]:r-4 sm:[&>.recharts-active-dot]:r-6"
               dot={{ fill: '#3B82F6', strokeWidth: 2, r: 3 }}
               activeDot={{ r: 4, stroke: '#3B82F6', strokeWidth: 2 }}
-              className="sm:[&>circle]:r-4 sm:[&>.recharts-active-dot]:r-6"
             />
-          </LineChart>
-        </ResponsiveContainer>
+          </LineChartWrapper>
+        </ResponsiveContainerWrapper>
       </CardContent>
     </Card>
     </motion.div>

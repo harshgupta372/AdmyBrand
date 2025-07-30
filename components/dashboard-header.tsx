@@ -13,7 +13,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 interface DashboardHeaderProps {
   onDateRangeChange?: (dateRange: any) => void;
-  onFiltersChange?: (filters: any) => void;
+  onFiltersChange: (filters: any) => void;
   exportData?: any[];
 }
 
